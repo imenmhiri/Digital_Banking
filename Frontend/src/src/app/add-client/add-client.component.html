@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h1> Ajouter un client </h1>
+            <form (ngSubmit)="ajouterClient()">
+              <div class="form-group">
+                <label for="nom">Nom:</label>
+                <input type="text" class="form-control" id="nom" [(ngModel)]="nouveauClient.nom" name="nom">
+              </div>
+              <div class="form-group">
+                <label for="prenom">Prénom:</label>
+                <input type="text" class="form-control" id="prenom" [(ngModel)]="nouveauClient.prenom" name="prenom">
+              </div>
+              <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" [(ngModel)]="nouveauClient.email" name="email">
+              </div>
+            <hr>
+              <button type="submit" class="btn btn-primary">Ajouter Client</button>
+
+              <button type="button" class="btn btn-danger btn-danger-custom float-left" (click)="annuler()">Annuler</button>
+
+
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,32 @@
+.ACTIVE {
+    color: green; /* couleur de texte bleu */
+    font-weight: bold; /* texte en gras */
+    font-style: italic;
+  }
+  
+  .FERME {
+    color: brown; /* couleur de texte verte */
+    font-weight: bold; /* texte en gras */
+    font-style: italic;
+  }
+
+  .BLOOQUE {
+    color: red; /* couleur de texte verte */
+    font-weight: bold; /* texte en gras */
+    font-style: italic;
+  }
+  .solde{
+
+    font-weight: bold; /* texte en gras */
+  }
+  .Courant{
+    color: rebeccapurple;
+    font-style: italic;
+  }
+
+  .Epargne{
+    color: palevioletred;
+    font-style: italic;
+  }
+
+  

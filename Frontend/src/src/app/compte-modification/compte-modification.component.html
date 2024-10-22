@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Saisir le montant à débiter</h2>
+<div mat-dialog-content>
+  <p>Entrez le montant à débiter :</p>
+  <mat-form-field>
+    <input matInput placeholder="Montant" [(ngModel)]="data.montant">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-button [mat-dialog-close]="data.montant" cdkFocusInitial>Effectuer</button>
+</div>

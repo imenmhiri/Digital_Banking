@@ -1,0 +1,42 @@
+<div class="container">
+    <div class="row">
+      <div class="col-12">
+    
+        
+        <h1 class="float-right">
+          
+
+            <button type="button" [routerLink]="['/addClient']"    class="btn btn-primary btn-lg">  Ajouter  </button> 
+        </h1>
+        
+        <table class="table table-bordered table-striped">
+          <thead class="thread-dark">
+            <tr>
+              <th scope="col">Matricule</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ct of client" [ngClass]="{'no-border': true}">
+              <td>{{ ct.id }}</td>
+              <td>{{ ct.nom}}</td>
+              <td>{{ ct.prenom }}</td>
+              <td>{{ ct.email }}  </td>
+              <td>
+                <button (click)="supprimerClient(ct.id)" type="button" class="btn btn-outline-danger"   ><mat-icon>delete</mat-icon> 
+                 </button>
+              </td>
+              <td>
+                <button (click)="modifierClient(ct)" type="button" class="btn btn-outline-success"> Modifier</button>
+
+
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

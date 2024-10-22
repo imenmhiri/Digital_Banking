@@ -1,0 +1,84 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="float-right">
+        <button  (click)="openAjoutCompteDialog()" type="button"     class="btn btn-primary btn-lg">  Ajouter  </button> 
+
+
+
+          
+         </h1>
+      
+      <table class="table table-bordered table-striped">
+        <thead class="thread-dark">
+          <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Solde</th>
+            <th scope="col">Etat</th>
+            <th scope="col">Type</th>
+            <th scope="col">Découvert</th>
+            <th scope="col">Taux d'interet</th>
+            <th scope="col">Date de creation </th>
+            <th scope="col">Nom du client</th>
+            <th scope="col">Opération</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ct of compte" [ngClass]="{'no-border': true}">
+            <td>{{ ct.id }}</td>
+            <td class="solde">{{ ct.solde }}</td>
+            <td [ngClass]="{ 'ACTIVE': ct.etat === 'ACTIVE', 'FERME': ct.etat === 'FERME', 'BLOOQUE': ct.etat === 'BLOOQUE' }">{{ ct.etat }}</td>
+            <td class="type"><ng-container *ngIf="ct.decouvert === undefined" class="Epargne">
+              <p class="Epargne">  Epargne </p>
+          </ng-container>
+          <ng-container *ngIf="ct.decouvert != undefined" >
+            <p class="Courant"> Courant </p>
+        </ng-container>
+      </td>
+            <td>
+               
+              <ng-container *ngIf="ct.decouvert === undefined">
+                  -- -- -- -- -- --
+              </ng-container>
+              <ng-container *ngIf="ct.decouvert != undefined">
+                {{ct.decouvert}} 
+            </ng-container>
+            </td>
+
+            <td>
+             
+              <ng-container *ngIf="ct.tauxInteret === undefined">
+                -- -- -- -- -- -- 
+              </ng-container>
+              <ng-container *ngIf="ct.tauxInteret != undefined">
+                {{ct.tauxInteret}} 
+            </ng-container>
+            </td>
+
+            <td>{{ ct.datedecreation }}</td>
+            <td>{{ ct.client.nom }} {{ ct.client.prenom}}</td>
+            
+            <td>
+              <div ngbDropdown class="d-inline-block" *ngIf="ct.etat === 'ACTIVE'">
+                <button class="btn btn-outline-success" id="dropdownBasic1" ngbDropdownToggle>
+                    Operation
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                  <button  (click)="supprimerCompte(ct.id)" class="btn btn-outline-danger" ngbDropdownItem >Supprimer</button>
+                  <button ngbDropdownItem (click)="openDebitDialog(ct.id)" >Débiter</button>
+                  <button ngbDropdownItem (click)="openCreditDialog(ct.id)" >Crediter</button>
+                </div>
+              </div>
+
+               
+                <button (click)="supprimerCompte(ct.id)" class="btn btn-outline-danger" *ngIf="ct.etat !== 'ACTIVE'">
+                  <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
